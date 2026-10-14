@@ -55,6 +55,9 @@ python unify-cross-species/unify_prepare_descriptions.py \
 建议独立 Python 3.10 环境，服务器现有驱动支持 CUDA 12.4 时可使用：
 
 ```bash
+# 在存放 GB/CL 输入数据的目录中下载本项目。
+git clone https://github.com/zhangdeng1992/unify-cross-species.git
+
 micromamba create -n unify -c conda-forge python=3.10 pip -y
 micromamba activate unify
 python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu124
