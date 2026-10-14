@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.h5ad
+*.pt
+*.safetensors
+*.bin
+models/
+data/
+results/
+*.out
+*.err
+*.log
