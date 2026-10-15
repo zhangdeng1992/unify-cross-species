@@ -72,6 +72,9 @@ python /data/home/dingbaoqing/zhangdeng/soft/Unify/Unify.py --help
 
 `requirements.txt` 仅列当前 integration 路径实际需要的包；不需要安装官方通用清单中的 faiss-gpu。
 上游代码直接用 pandas Series 索引 torch Tensor，与 pandas 3 不兼容，所以固定 pandas 2.2.3。
+评估使用的 louvain 0.8.2 依赖 `pkg_resources`，因此固定 `setuptools==80.9.0`。
+若训练评估报 `No module named 'pkg_resources'`，在 Unify 环境执行
+`python -m pip install setuptools==80.9.0`，再运行项目测试检查 Louvain 后端。
 若本机没有 louvain 的二进制 wheel，需要 C/C++ 编译器和 CMake；优先使用 Python 3.10 的可用 wheel。
 
 ## 从功能描述生成文本嵌入
@@ -155,7 +158,7 @@ sc.pl.umap(adata, color=['species', 'unify_cell_type'])
 本次已验证：Python 3.12、PyTorch 2.5.1 CPU 与 requirements.txt 中的依赖可运行官方
 猫/虎 toy_data，一轮训练后得到 1788 个细胞、256 维且全部有限的 X_unify。
 短跑使用 500 HVG、每个模态 16 macrogenes、batch-size 128；这只验证流程，不代表整合质量。
-另有 10 项自动测试通过，涵盖输入检查、物种/模态顺序、文本池化和拟南芥注释转换。
+另有 11 项自动测试，涵盖输入检查、物种/模态顺序、文本池化、拟南芥注释转换和实际 Louvain 聚类后端。
 
 ## 开发验证
 

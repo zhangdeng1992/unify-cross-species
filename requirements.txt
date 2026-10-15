@@ -11,4 +11,6 @@ matplotlib>=3.8,<3.10
 igraph>=0.11,<0.12
 leidenalg>=0.10,<0.11
 
+# louvain 0.8.2 imports pkg_resources, which newer setuptools no longer provides.
+setuptools==80.9.0
 louvain==0.8.2
